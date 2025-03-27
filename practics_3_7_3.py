@@ -11,14 +11,17 @@ class Customer:
     # новое значение скидки должно стать 80.
     # Метод не должен ничего возвращать.
     def set_discount(self, new_value: int):
-        ...
+        if new_value > 80:
+            self.__discount = 80
+        else:
+            self.__discount = new_value
 
     # Метод get_price() получает на вход исходную стоимость товара
     # и должен вернуть новую цену товара с учётом
     # скидки покупателя.
     # Возвращаемое значение округлите до двух знаков после запятой.
     def get_price(self, price: int) -> float:
-        self.price = "{:.2f}".format(price / 100 * (100 - self.__discount))
+        self.price = round((price / 100 * (100 - self.__discount)), 2)
         return self.price
 
 
